@@ -9,27 +9,28 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Security.Claims;
 using System.Text;
+using SocialNetwork_Backend.Services.Interfaces;
 using System.Threading.Tasks;
 
 namespace SocialNetwork_Backend.Services
 {
    
-    public class UserService : IUserService
+    public class JwtHelper : IJwtHelper
     {
-        private readonly SocialNetworkContext socialNetworkContext;
+        private readonly SocialNetworkContext _context;
         private readonly AppSettings _appSettings;
 
 
-        public UserService(IOptions<AppSettings> appSettings, SocialNetworkContext socialNetworkContext)
+        public JwtHelper(IOptions<AppSettings> appSettings, SocialNetworkContext context)
         {
             _appSettings = appSettings.Value;
-            this.socialNetworkContext = socialNetworkContext;
+            _context = context;
 
         }
 
-        public User Authenticate(string username)
+        public JwtToken GenerateJwtToken(string username)
         {
-            User user = socialNetworkContext.Users.SingleOrDefault(i => i.UserName == username);
+            User user = _context.Users.SingleOrDefault(i => i.UserName == username);
 
             if (user == null)
                 return null;
@@ -45,13 +46,11 @@ namespace SocialNetwork_Backend.Services
                 Expires = DateTime.UtcNow.AddDays(7),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
             };
-            var token = tokenHandler.CreateToken(tokenDescriptor);
-            user.Token = tokenHandler.WriteToken(token);
-
-
-            user.PasswordHash = null;
-
-            return user;
+            var token = new JwtToken()
+            {
+                AccessToken = tokenHandler.WriteToken(tokenHandler.CreateToken(tokenDescriptor)),
+            };
+            return token;
         }
 
     }

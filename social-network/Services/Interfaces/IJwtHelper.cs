@@ -4,10 +4,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SocialNetwork_Backend.Services
+namespace SocialNetwork_Backend.Services.Interfaces
 {
-    public interface IUserService
+    public interface IJwtHelper
     {
-        User Authenticate(string UserName);
+        JwtToken GenerateJwtToken(string UserName);
     }
 }

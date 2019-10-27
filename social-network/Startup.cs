@@ -16,6 +16,7 @@ using SocialNetwork_Backend.Helpers;
 using SocialNetwork_Backend.Hubs;
 using SocialNetwork_Backend.Providers;
 using SocialNetwork_Backend.Services;
+using SocialNetwork_Backend.Services.Interfaces;
 using System.Text;
 
 namespace SocialNetwork_Backend
@@ -36,7 +37,8 @@ namespace SocialNetwork_Backend
             services.AddDbContext<SocialNetworkContext>(
                options => options.UseSqlServer(Configuration.GetConnectionString("SocialNetwork")));
 
-            services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IJwtHelper, JwtHelper>();
+            services.AddScoped<IAuthenticationService, AuthenticationService>();
 
             services.AddIdentity<Models.User, IdentityRole>()
                 .AddEntityFrameworkStores<SocialNetworkContext>();
