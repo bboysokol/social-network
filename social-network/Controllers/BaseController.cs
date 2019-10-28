@@ -13,7 +13,10 @@ using SocialNetwork_Backend.Services.ServiceResponses;
 
 namespace SocialNetwork_Backend.Controllers
 {
-
+    [Route("api/[controller]/[action]")]
+    [ApiController]
+    [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(Responses.Wrappers.ApiValidationErrorResponse))]
+    [ProducesResponseType(StatusCodes.Status500InternalServerError, Type = typeof(Responses.Wrappers.ApiValidationErrorResponse))]
     public class BaseController : ControllerBase
     {
 

@@ -10,11 +10,12 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json.Serialization;
 using NSwag;
-using NSwag.SwaggerGeneration.Processors.Security;
+using NSwag.Generation.Processors.Security;
 using SocialNetwork_Backend.Database;
 using SocialNetwork_Backend.Helpers;
 using SocialNetwork_Backend.Hubs;
 using SocialNetwork_Backend.Providers;
+using SocialNetwork_Backend.Responses.Wrappers.Factories;
 using SocialNetwork_Backend.Services;
 using SocialNetwork_Backend.Services.Interfaces;
 using System.Text;
@@ -38,6 +39,7 @@ namespace SocialNetwork_Backend
                options => options.UseSqlServer(Configuration.GetConnectionString("SocialNetwork")));
 
             services.AddScoped<IJwtHelper, JwtHelper>();
+            services.AddScoped<IApiResponseFactory, ApiResponseFactory>();
             services.AddScoped<IAuthenticationService, AuthenticationService>();
 
             services.AddIdentity<Models.User, IdentityRole>()
@@ -77,13 +79,15 @@ namespace SocialNetwork_Backend
                 .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddSwaggerDocument(document =>
             {
+
+                document.Title = "toDo";
                 document.DocumentName = "swagger";
                 document.OperationProcessors.Add(new OperationSecurityScopeProcessor("jwt"));
-                document.DocumentProcessors.Add(new SecurityDefinitionAppender("jwt", new SwaggerSecurityScheme
+                document.DocumentProcessors.Add(new SecurityDefinitionAppender("jwt", new OpenApiSecurityScheme
                 {
-                    Type = SwaggerSecuritySchemeType.ApiKey,
+                    Type = OpenApiSecuritySchemeType.ApiKey,
                     Name = "Authorization",
-                    In = SwaggerSecurityApiKeyLocation.Header,
+                    In = OpenApiSecurityApiKeyLocation.Header,
                     Description = "JWT Token - remember to add 'Bearer ' before the token",
                 }));
             });
@@ -118,16 +122,17 @@ namespace SocialNetwork_Backend
                 app.UseHttpsRedirection();
             }
 
-            app.UseSwagger(options =>
+            app.UseOpenApi(options =>
             {
                 options.DocumentName = "swagger";
                 options.Path = "/swagger/v1/swagger.json";
                 options.PostProcess = (document, _) =>
                 {
-                    document.Schemes.Add(SwaggerSchema.Https);
+                    document.Schemes.Add(OpenApiSchema.Https);
                 };
             });
-            app.UseSwaggerUi3(options => {
+            app.UseSwaggerUi3(options =>
+            {
                 options.DocumentPath = "/swagger/v1/swagger.json";
             });
 
