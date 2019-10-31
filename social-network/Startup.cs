@@ -7,13 +7,12 @@ using Microsoft.AspNetCore.SignalR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
-using Newtonsoft.Json.Serialization;
 using NSwag;
 using NSwag.Generation.Processors.Security;
 using SocialNetwork_Backend.Database;
 using SocialNetwork_Backend.Helpers;
-using SocialNetwork_Backend.Hubs;
 using SocialNetwork_Backend.Providers;
 using SocialNetwork_Backend.Responses.Wrappers.Factories;
 using SocialNetwork_Backend.Services;
@@ -76,7 +75,7 @@ namespace SocialNetwork_Backend
             services.AddSingleton(typeof(IUserIdProvider), typeof(MyUserIdProvider));
             // Add framework services.
             services.AddMvc()
-                .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+                .SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
             services.AddSwaggerDocument(document =>
             {
 
@@ -92,23 +91,19 @@ namespace SocialNetwork_Backend
                 }));
             });
 
-            services.AddSignalR().AddJsonProtocol(options =>
-            {
-                options.PayloadSerializerSettings.ContractResolver =
-                new DefaultContractResolver();
-            });
+            //services.AddSignalR().AddJsonProtocol(options => options.PayloadSerializerSettings.ContractResolver =
+            //    new DefaultContractResolver());
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
             {
                 app.UseCors(builder => builder
                     .AllowAnyOrigin()
                     .AllowAnyMethod()
-                    .AllowAnyHeader()
-                    .AllowCredentials());
+                    .AllowAnyHeader());
                 app.UseDeveloperExceptionPage();
             }
             else
@@ -116,8 +111,7 @@ namespace SocialNetwork_Backend
                 app.UseCors(builder => builder
                     .AllowAnyOrigin()
                     .AllowAnyMethod()
-                    .AllowAnyHeader()
-                    .AllowCredentials());
+                    .AllowAnyHeader());
                 app.UseHsts();
                 app.UseHttpsRedirection();
             }
@@ -142,12 +136,10 @@ namespace SocialNetwork_Backend
             });
 
             app.UseAuthentication();
-            app.UseSignalR(routes =>
-            {
-                routes.MapHub<NotificationHub>("/notification");
-            });
-
-            app.UseMvc();
+            //app.UseSignalR(routes =>
+            //{
+            //    routes.MapHub<NotificationHub>("/notification");
+            //});
         }
     }
 }
