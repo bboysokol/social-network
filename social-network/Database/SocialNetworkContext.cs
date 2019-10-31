@@ -1,4 +1,5 @@
 
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using SocialNetwork_Backend.Models;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace SocialNetwork_Backend.Database
 {
-    public class SocialNetworkContext : IdentityDbContext<User>
+    public class SocialNetworkContext : IdentityDbContext<User, IdentityRole<int>, int>
     {
         public SocialNetworkContext(DbContextOptions<SocialNetworkContext> options)
             : base(options)
@@ -32,12 +33,12 @@ namespace SocialNetwork_Backend.Database
                 .WithMany(i => i.Posts)
                 .HasForeignKey(i => i.UserId);
 
-
             modelBuilder
                 .Entity<Comment>()
                 .HasOne(i => i.User)
                 .WithMany(i => i.Comments)
-                .HasForeignKey(i => i.UserId);
+                .HasForeignKey(i => i.UserId)
+                .OnDelete(DeleteBehavior.Restrict);
 
             modelBuilder
                 .Entity<Comment>()
@@ -45,11 +46,15 @@ namespace SocialNetwork_Backend.Database
                 .WithMany(i => i.Comments)
                 .HasForeignKey(i => i.PostId);
 
-
             modelBuilder
                 .Entity<Reaction>()
                 .HasIndex(p => new { p.UserId, p.PostId }).IsUnique();
 
+            modelBuilder
+                .Entity<Reaction>()
+                .HasOne(i => i.Post)
+                .WithMany(i => i.Reactions)
+                .OnDelete(DeleteBehavior.Restrict);
 
             modelBuilder
                 .Entity<Friend>()
@@ -66,14 +71,6 @@ namespace SocialNetwork_Backend.Database
                 .WithMany(i => i.Friends)
                 .HasForeignKey(i => i.UserId)
                 .OnDelete(DeleteBehavior.Restrict);
-
-            modelBuilder
-                .Entity<Friend>()
-                .HasOne(i => i.FriendForeignKey)
-                .WithMany(i => i.FriendOf)
-                .HasForeignKey(i => i.FriendId)
-                .OnDelete(DeleteBehavior.Restrict);
-
         }
     }
 }

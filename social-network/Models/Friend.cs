@@ -10,10 +10,10 @@ namespace SocialNetwork_Backend.Models
     public class Friend
     {
         
-        public string UserId { get; set; }
+        public int UserId { get; set; }
         [ForeignKey("UserId")]
         public virtual User UserForeignKey { get; set; }
-        public string FriendId { get; set; }
+        public int FriendId { get; set; }
         [ForeignKey("FriendId")]
         public virtual User FriendForeignKey { get; set; }
         [Required]

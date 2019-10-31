@@ -13,6 +13,7 @@ using NSwag;
 using NSwag.Generation.Processors.Security;
 using SocialNetwork_Backend.Database;
 using SocialNetwork_Backend.Helpers;
+using SocialNetwork_Backend.Models;
 using SocialNetwork_Backend.Providers;
 using SocialNetwork_Backend.Responses.Wrappers.Factories;
 using SocialNetwork_Backend.Services;
@@ -41,7 +42,7 @@ namespace SocialNetwork_Backend
             services.AddScoped<IApiResponseFactory, ApiResponseFactory>();
             services.AddScoped<IAuthenticationService, AuthenticationService>();
 
-            services.AddIdentity<Models.User, IdentityRole>()
+            services.AddIdentity<User, IdentityRole<int>>()
                 .AddEntityFrameworkStores<SocialNetworkContext>();
 
             // configure strongly typed settings objects

@@ -13,7 +13,7 @@ namespace SocialNetwork_Backend.ViewModels
         [Required]
         public string ConfirmedPassword { get; set; }
         [Required]
-        public DateTime RegisterDate { get; set; } = DateTime.Now;
+        public string RegisterDate { get; set; }
         public string AvatarUrl { get; set; }
     }
 }
