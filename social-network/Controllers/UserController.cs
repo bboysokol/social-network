@@ -9,11 +9,11 @@
 //using Microsoft.EntityFrameworkCore;
 //using Microsoft.Extensions.Logging;
 //using Newtonsoft.Json.Linq;
-//using SocialNetwork_Backend.Database;
-//using SocialNetwork_Backend.Models;
-//using SocialNetwork_Backend.ViewModels.UserVMs;
+//using SocialNetwork.Api.Database;
+//using SocialNetwork.Api.Models;
+//using SocialNetwork.Api.ViewModels.UserVMs;
 
-//namespace SocialNetwork_Backend.Controllers
+//namespace SocialNetwork.Api.Controllers
 //{
 //    [Route("api/[controller]/[action]")]
 //    [ApiController]

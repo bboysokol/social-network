@@ -1,4 +1,4 @@
-﻿using SocialNetwork_Backend.Responses.Wrappers;
+﻿using SocialNetwork.Api.Responses.Wrappers;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Http;
 using System;
@@ -7,7 +7,7 @@ using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 
-namespace SocialNetwork_Backend.Middleware
+namespace SocialNetwork.Api.Middleware
 {
     public class JsonExceptionMiddleware
     {

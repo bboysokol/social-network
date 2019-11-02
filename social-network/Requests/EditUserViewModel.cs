@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SocialNetwork_Backend.ViewModels.UserVMs
+namespace SocialNetwork.Api.ViewModels.UserVMs
 {
     public class EditUserViewModel
     {

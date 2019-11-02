@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace SocialNetwork_Backend.Migrations
+namespace SocialNetwork.Api.Migrations
 {
     public partial class init2 : Migration
     {

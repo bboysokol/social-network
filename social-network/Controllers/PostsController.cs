@@ -8,13 +8,13 @@
 //using Microsoft.AspNetCore.Mvc;
 //using Microsoft.EntityFrameworkCore;
 //using Microsoft.Extensions.Logging;
-//using SocialNetwork_Backend.Database;
-//using SocialNetwork_Backend.Models;
-//using SocialNetwork_Backend.ViewModels;
-//using SocialNetwork_Backend.ViewModels.CommentVM;
-//using SocialNetwork_Backend.ViewModels.ReactionVMs;
+//using SocialNetwork.Api.Database;
+//using SocialNetwork.Api.Models;
+//using SocialNetwork.Api.ViewModels;
+//using SocialNetwork.Api.ViewModels.CommentVM;
+//using SocialNetwork.Api.ViewModels.ReactionVMs;
 
-//namespace SocialNetwork_Backend.Controllers
+//namespace SocialNetwork.Api.Controllers
 //{
 //    [Route("api/[controller]/[action]")]
 //    [ApiController]

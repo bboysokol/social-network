@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SocialNetwork_Backend.Responses.Wrappers.Attributes
+namespace SocialNetwork.Api.Responses.Wrappers.Attributes
 {
     internal sealed class LocalizedAttribute : Attribute
     {

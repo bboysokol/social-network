@@ -9,9 +9,9 @@
 //using Microsoft.AspNetCore.Identity;
 //using Microsoft.AspNetCore.Mvc;
 //using Microsoft.Extensions.Logging;
-//using SocialNetwork_Backend.Models;
+//using SocialNetwork.Api.Models;
 
-//namespace SocialNetwork_Backend.Controllers
+//namespace SocialNetwork.Api.Controllers
 //{
 //    [Route("api/[controller]")]
 //    [ApiController]

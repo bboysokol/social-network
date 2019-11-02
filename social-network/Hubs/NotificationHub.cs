@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SocialNetwork_Backend.Hubs
+namespace SocialNetwork.Api.Hubs
 {
 
     public class NotificationHub : Hub

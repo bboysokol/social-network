@@ -1,14 +1,13 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using SocialNetwork_Backend.Models;
-using SocialNetwork_Backend.Responses.Wrappers;
-using SocialNetwork_Backend.Responses.Wrappers.Factories;
-using SocialNetwork_Backend.Services;
-using SocialNetwork_Backend.Services.Interfaces;
-using SocialNetwork_Backend.ViewModels;
+using SocialNetwork.Api.Models;
+using SocialNetwork.Api.Responses.Wrappers;
+using SocialNetwork.Api.Responses.Wrappers.Factories;
+using SocialNetwork.Api.Services.Interfaces;
+using SocialNetwork.Api.ViewModels;
 
-namespace SocialNetwork_Backend.Controllers
+namespace SocialNetwork.Api.Controllers
 {
     [Produces("application/json")]
     [AllowAnonymous]

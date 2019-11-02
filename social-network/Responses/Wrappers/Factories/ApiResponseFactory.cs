@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SocialNetwork_Backend.Responses.Wrappers.Factories
+namespace SocialNetwork.Api.Responses.Wrappers.Factories
 {
     public class ApiResponseFactory : IApiResponseFactory
     {

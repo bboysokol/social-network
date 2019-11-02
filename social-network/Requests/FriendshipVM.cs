@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SocialNetwork_Backend.ViewModels.FriendVMs
+namespace SocialNetwork.Api.ViewModels.FriendVMs
 {
     public class FriendshipVM
     {

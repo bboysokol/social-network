@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
 
-namespace SocialNetwork_Backend.Models
+namespace SocialNetwork.Api.Models
 {
     public class User : IdentityUser<int>
     {

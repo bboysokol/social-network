@@ -1,10 +1,10 @@
-﻿using SocialNetwork_Backend.Database;
+﻿using SocialNetwork.Api.Database;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SocialNetwork_Backend.Services
+namespace SocialNetwork.Api.Services
 {
     
     public class BaseService

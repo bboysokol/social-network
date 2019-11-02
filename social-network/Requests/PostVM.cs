@@ -1,13 +1,13 @@
-using SocialNetwork_Backend.Models;
-using SocialNetwork_Backend.ViewModels.CommentVM;
-using SocialNetwork_Backend.ViewModels.ReactionVMs;
+using SocialNetwork.Api.Models;
+using SocialNetwork.Api.ViewModels.CommentVM;
+using SocialNetwork.Api.ViewModels.ReactionVMs;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SocialNetwork_Backend.ViewModels
+namespace SocialNetwork.Api.ViewModels
 {
     public class PostVM
     {

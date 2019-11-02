@@ -16,7 +16,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "SocialNetwork_Backend": {
+    "SocialNetwork.Api": {
       "commandName": "Project",
       "launchBrowser": true,
       "environmentVariables": {

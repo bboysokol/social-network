@@ -1,4 +1,4 @@
-﻿namespace SocialNetwork_Backend.Responses.Wrappers.Factories
+﻿namespace SocialNetwork.Api.Responses.Wrappers.Factories
 {
     public interface IApiResponseFactory
     {

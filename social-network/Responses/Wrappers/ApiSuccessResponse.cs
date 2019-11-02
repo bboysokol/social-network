@@ -1,4 +1,4 @@
-﻿namespace SocialNetwork_Backend.Responses.Wrappers
+﻿namespace SocialNetwork.Api.Responses.Wrappers
 {
     public class ApiSuccessResponse<T> : ApiResponse
     {

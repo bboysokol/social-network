@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace SocialNetwork_Backend.Responses.Wrappers
+namespace SocialNetwork.Api.Responses.Wrappers
 {
     public class ApiValidationErrorResponse : ApiResponse
     {

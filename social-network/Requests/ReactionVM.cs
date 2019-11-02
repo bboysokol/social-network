@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SocialNetwork_Backend.ViewModels.ReactionVMs
+namespace SocialNetwork.Api.ViewModels.ReactionVMs
 {
     public class ReactionVM
     {

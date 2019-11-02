@@ -1,18 +1,18 @@
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
-using SocialNetwork_Backend.Database;
-using SocialNetwork_Backend.Helpers;
-using SocialNetwork_Backend.Models;
 using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Security.Claims;
 using System.Text;
-using SocialNetwork_Backend.Services.Interfaces;
 using System.Threading.Tasks;
+using SocialNetwork.Api.Database;
+using SocialNetwork.Api.Helpers;
+using SocialNetwork.Api.Services.Interfaces;
+using SocialNetwork.Api.Models;
 
-namespace SocialNetwork_Backend.Services
+namespace SocialNetwork.Api.Services
 {
    
     public class JwtHelper : IJwtHelper

@@ -11,16 +11,16 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using NSwag;
 using NSwag.Generation.Processors.Security;
-using SocialNetwork_Backend.Database;
-using SocialNetwork_Backend.Helpers;
-using SocialNetwork_Backend.Models;
-using SocialNetwork_Backend.Providers;
-using SocialNetwork_Backend.Responses.Wrappers.Factories;
-using SocialNetwork_Backend.Services;
-using SocialNetwork_Backend.Services.Interfaces;
+using SocialNetwork.Api.Database;
+using SocialNetwork.Api.Models;
+using SocialNetwork.Api.Providers;
+using SocialNetwork.Api.Responses.Wrappers.Factories;
+using SocialNetwork.Api.Services;
+using SocialNetwork.Api.Services.Interfaces;
 using System.Text;
+using SocialNetwork.Api.Helpers;
 
-namespace SocialNetwork_Backend
+namespace SocialNetwork.Api
 {
     public class Startup
     {
@@ -40,14 +40,11 @@ namespace SocialNetwork_Backend
             services.AddDbContext<SocialNetworkContext>(
                options => options.UseSqlServer(Configuration.GetConnectionString("SocialNetwork")));
 
-            services.AddScoped<IJwtHelper, JwtHelper>();
-            services.AddScoped<IApiResponseFactory, ApiResponseFactory>();
-            services.AddScoped<IAuthenticationService, AuthenticationService>();
+
 
             services.AddIdentity<User, IdentityRole<int>>()
                 .AddEntityFrameworkStores<SocialNetworkContext>();
 
-            // configure strongly typed settings objects
             var appSettingsSection = Configuration.GetSection("AppSettings");
             services.Configure<AppSettings>(appSettingsSection);
 
@@ -71,14 +68,15 @@ namespace SocialNetwork_Backend
                     IssuerSigningKey = new SymmetricSecurityKey(key),
                     ValidateIssuer = false,
                     ValidateAudience = false
-
                 };
             });
 
-            services.AddSingleton(typeof(IUserIdProvider), typeof(MyUserIdProvider));
+            services.AddScoped<IJwtHelper, JwtHelper>();
+            services.AddScoped<IApiResponseFactory, ApiResponseFactory>();
+            services.AddScoped<IAuthenticationService, AuthenticationService>();
+            services.AddSingleton<IUserIdProvider, MyUserIdProvider>();
             services.AddSwaggerDocument(document =>
             {
-
                 document.Title = "toDo";
                 document.DocumentName = "swagger";
                 document.OperationProcessors.Add(new OperationSecurityScopeProcessor("jwt"));

@@ -1,8 +1,8 @@
-﻿using SocialNetwork_Backend.Models;
-using SocialNetwork_Backend.Services.ServiceResponses;
-using SocialNetwork_Backend.ViewModels;
+﻿using SocialNetwork.Api.Models;
+using SocialNetwork.Api.Services.ServiceResponses;
+using SocialNetwork.Api.ViewModels;
 
-namespace SocialNetwork_Backend.Services.Interfaces
+namespace SocialNetwork.Api.Services.Interfaces
 {
     public interface IAuthenticationService
     {

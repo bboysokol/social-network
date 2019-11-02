@@ -9,12 +9,12 @@
 //using Microsoft.AspNetCore.SignalR;
 //using Microsoft.EntityFrameworkCore;
 //using Microsoft.Extensions.Logging;
-//using SocialNetwork_Backend.Database;
-//using SocialNetwork_Backend.Hubs;
-//using SocialNetwork_Backend.Models;
-//using SocialNetwork_Backend.ViewModels.FriendVMs;
+//using SocialNetwork.Api.Database;
+//using SocialNetwork.Api.Hubs;
+//using SocialNetwork.Api.Models;
+//using SocialNetwork.Api.ViewModels.FriendVMs;
 
-//namespace SocialNetwork_Backend.Controllers
+//namespace SocialNetwork.Api.Controllers
 //{
 //    [Route("api/[controller]/[action]")]
 //    [ApiController]

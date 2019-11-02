@@ -7,11 +7,11 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using SocialNetwork_Backend.Models;
-using SocialNetwork_Backend.Responses.Wrappers.Factories;
-using SocialNetwork_Backend.Services.ServiceResponses;
+using SocialNetwork.Api.Models;
+using SocialNetwork.Api.Responses.Wrappers.Factories;
+using SocialNetwork.Api.Services.ServiceResponses;
 
-namespace SocialNetwork_Backend.Controllers
+namespace SocialNetwork.Api.Controllers
 {
     [Route("api/[controller]/[action]")]
     [ApiController]

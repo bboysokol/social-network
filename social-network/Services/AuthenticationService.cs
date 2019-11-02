@@ -1,16 +1,12 @@
-﻿using SocialNetwork_Backend.Services.Interfaces;
-using SocialNetwork_Backend.Services;
-using System;
-using System.Collections.Generic;
+﻿using SocialNetwork.Api.Services.Interfaces;
 using System.Linq;
-using System.Threading.Tasks;
-using SocialNetwork_Backend.Models;
-using SocialNetwork_Backend.Services.ServiceResponses;
-using SocialNetwork_Backend.ViewModels;
-using SocialNetwork_Backend.Database;
+using SocialNetwork.Api.Models;
+using SocialNetwork.Api.Services.ServiceResponses;
+using SocialNetwork.Api.ViewModels;
+using SocialNetwork.Api.Database;
 using Microsoft.AspNetCore.Identity;
 
-namespace SocialNetwork_Backend.Services
+namespace SocialNetwork.Api.Services
 {
     public class AuthenticationService : BaseService, IAuthenticationService
     {

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SocialNetwork_Backend.Services.ServiceResponses
+namespace SocialNetwork.Api.Services.ServiceResponses
 {
     public class ServiceResponse<T>
     {

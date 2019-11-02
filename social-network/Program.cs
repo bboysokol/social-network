@@ -2,7 +2,7 @@ using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 
-namespace SocialNetwork_Backend
+namespace SocialNetwork.Api
 {
     public class Program
     {
