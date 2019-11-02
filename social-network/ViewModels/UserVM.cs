@@ -8,11 +8,8 @@ namespace SocialNetwork_Backend.ViewModels.UserVMs
 {
     public class UserVM
     {
-        [Required]
-        public string Id { get; set; }
-        [Required]
+        public int Id { get; set; }
         public string Author { get; set; }
-        [Required]
         public string AvatarUrl { get; set; }
 
 

@@ -35,6 +35,8 @@ namespace SocialNetwork_Backend
         {
             services.AddCors();
             services.AddSwaggerDocument();
+            services.AddControllers()
+                .SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
             services.AddDbContext<SocialNetworkContext>(
                options => options.UseSqlServer(Configuration.GetConnectionString("SocialNetwork")));
 
@@ -74,9 +76,6 @@ namespace SocialNetwork_Backend
             });
 
             services.AddSingleton(typeof(IUserIdProvider), typeof(MyUserIdProvider));
-            // Add framework services.
-            services.AddMvc()
-                .SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
             services.AddSwaggerDocument(document =>
             {
 
@@ -99,6 +98,7 @@ namespace SocialNetwork_Backend
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            app.UseRouting();
             if (env.IsDevelopment())
             {
                 app.UseCors(builder => builder
@@ -137,6 +137,12 @@ namespace SocialNetwork_Backend
             });
 
             app.UseAuthentication();
+            app.UseAuthorization();
+
+            app.UseEndpoints(endpoints =>
+           {
+               endpoints.MapControllers();
+           });
             //app.UseSignalR(routes =>
             //{
             //    routes.MapHub<NotificationHub>("/notification");
