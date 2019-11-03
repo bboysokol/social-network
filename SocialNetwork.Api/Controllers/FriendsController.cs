@@ -12,7 +12,7 @@
 //using SocialNetwork.Api.Database;
 //using SocialNetwork.Api.Hubs;
 //using SocialNetwork.Api.Models;
-//using SocialNetwork.Api.ViewModels.FriendVMs;
+//using SocialNetwork.Api.Requests.FriendVMs;
 
 //namespace SocialNetwork.Api.Controllers
 //{

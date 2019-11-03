@@ -1,7 +1,7 @@
 ﻿using SocialNetwork.Api.Services.Interfaces;
 using System.Linq;
 using SocialNetwork.Api.Services.ServiceResponses;
-using SocialNetwork.Api.ViewModels;
+using SocialNetwork.Api.Requests;
 using Microsoft.AspNetCore.Identity;
 using System.Threading.Tasks;
 using SocialNetwork.Data.Models;

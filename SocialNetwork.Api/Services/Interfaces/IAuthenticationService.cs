@@ -1,5 +1,5 @@
 ﻿using SocialNetwork.Api.Services.ServiceResponses;
-using SocialNetwork.Api.ViewModels;
+using SocialNetwork.Api.Requests;
 using SocialNetwork.Auth.Models;
 using System.Threading.Tasks;
 

@@ -11,7 +11,7 @@
 //using Newtonsoft.Json.Linq;
 //using SocialNetwork.Api.Database;
 //using SocialNetwork.Api.Models;
-//using SocialNetwork.Api.ViewModels.NotificationVMs;
+//using SocialNetwork.Api.Requests.NotificationVMs;
 
 //namespace SocialNetwork.Api.Controllers
 //{

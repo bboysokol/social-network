@@ -1,9 +1,9 @@
-using SocialNetwork.Api.ViewModels.CommentVM;
-using SocialNetwork.Api.ViewModels.ReactionVMs;
+using SocialNetwork.Api.Requests.CommentVM;
+using SocialNetwork.Api.Requests.ReactionVMs;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace SocialNetwork.Api.ViewModels
+namespace SocialNetwork.Api.Requests
 {
     public class PostVM
     {
@@ -12,7 +12,7 @@ namespace SocialNetwork.Api.ViewModels
         [Required]
         public string Author { get; set; }
         [Required]
-        public string AuthorId { get; set; }
+        public int AuthorId { get; set; }
         [Required]
         public string Content { get; set; }
         [Required]

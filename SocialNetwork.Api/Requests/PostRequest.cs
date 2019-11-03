@@ -1,6 +1,6 @@
 using System;
 
-namespace SocialNetwork.Api.ViewModels
+namespace SocialNetwork.Api.Requests
 {
     public class PostRequest
     {

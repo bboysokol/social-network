@@ -10,8 +10,8 @@
 //using Microsoft.Extensions.Logging;
 //using SocialNetwork.Api.Database;
 //using SocialNetwork.Api.Models;
-//using SocialNetwork.Api.ViewModels;
-//using SocialNetwork.Api.ViewModels.CommentVM;
+//using SocialNetwork.Api.Requests;
+//using SocialNetwork.Api.Requests.CommentVM;
 
 //namespace SocialNetwork.Api.Controllers
 //{
