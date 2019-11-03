@@ -3,17 +3,15 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using SocialNetwork.Api.Database;
+using SocialNetwork.Data.Database;
 
-namespace SocialNetwork.Api.Migrations
+namespace SocialNetwork.Data.Migrations
 {
     [DbContext(typeof(SocialNetworkContext))]
-    [Migration("20191031232145_init2")]
-    partial class init2
+    partial class SocialNetworkContextModelSnapshot : ModelSnapshot
     {
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -151,7 +149,7 @@ namespace SocialNetwork.Api.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("SocialNetwork.Api.Models.Comment", b =>
+            modelBuilder.Entity("SocialNetwork.Data.Models.Comment", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -182,7 +180,7 @@ namespace SocialNetwork.Api.Migrations
                     b.ToTable("Comments");
                 });
 
-            modelBuilder.Entity("SocialNetwork.Api.Models.Friend", b =>
+            modelBuilder.Entity("SocialNetwork.Data.Models.Friend", b =>
                 {
                     b.Property<int>("UserId")
                         .HasColumnType("int");
@@ -203,7 +201,7 @@ namespace SocialNetwork.Api.Migrations
                     b.ToTable("Friends");
                 });
 
-            modelBuilder.Entity("SocialNetwork.Api.Models.Notification", b =>
+            modelBuilder.Entity("SocialNetwork.Data.Models.Notification", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -233,7 +231,7 @@ namespace SocialNetwork.Api.Migrations
                     b.ToTable("Notifications");
                 });
 
-            modelBuilder.Entity("SocialNetwork.Api.Models.Post", b =>
+            modelBuilder.Entity("SocialNetwork.Data.Models.Post", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -272,7 +270,7 @@ namespace SocialNetwork.Api.Migrations
                     b.ToTable("Posts");
                 });
 
-            modelBuilder.Entity("SocialNetwork.Api.Models.Reaction", b =>
+            modelBuilder.Entity("SocialNetwork.Data.Models.Reaction", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -295,7 +293,7 @@ namespace SocialNetwork.Api.Migrations
                     b.ToTable("Reactions");
                 });
 
-            modelBuilder.Entity("SocialNetwork.Api.Models.User", b =>
+            modelBuilder.Entity("SocialNetwork.Data.Models.User", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -385,7 +383,7 @@ namespace SocialNetwork.Api.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<int>", b =>
                 {
-                    b.HasOne("SocialNetwork.Api.Models.User", null)
+                    b.HasOne("SocialNetwork.Data.Models.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -394,7 +392,7 @@ namespace SocialNetwork.Api.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<int>", b =>
                 {
-                    b.HasOne("SocialNetwork.Api.Models.User", null)
+                    b.HasOne("SocialNetwork.Data.Models.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -409,7 +407,7 @@ namespace SocialNetwork.Api.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("SocialNetwork.Api.Models.User", null)
+                    b.HasOne("SocialNetwork.Data.Models.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -418,70 +416,70 @@ namespace SocialNetwork.Api.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<int>", b =>
                 {
-                    b.HasOne("SocialNetwork.Api.Models.User", null)
+                    b.HasOne("SocialNetwork.Data.Models.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("SocialNetwork.Api.Models.Comment", b =>
+            modelBuilder.Entity("SocialNetwork.Data.Models.Comment", b =>
                 {
-                    b.HasOne("SocialNetwork.Api.Models.Post", "Post")
+                    b.HasOne("SocialNetwork.Data.Models.Post", "Post")
                         .WithMany("Comments")
                         .HasForeignKey("PostId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("SocialNetwork.Api.Models.User", "User")
+                    b.HasOne("SocialNetwork.Data.Models.User", "User")
                         .WithMany("Comments")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("SocialNetwork.Api.Models.Friend", b =>
+            modelBuilder.Entity("SocialNetwork.Data.Models.Friend", b =>
                 {
-                    b.HasOne("SocialNetwork.Api.Models.User", "FriendForeignKey")
+                    b.HasOne("SocialNetwork.Data.Models.User", "FriendForeignKey")
                         .WithMany()
                         .HasForeignKey("FriendId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("SocialNetwork.Api.Models.User", "UserForeignKey")
+                    b.HasOne("SocialNetwork.Data.Models.User", "UserForeignKey")
                         .WithMany("Friends")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("SocialNetwork.Api.Models.Notification", b =>
+            modelBuilder.Entity("SocialNetwork.Data.Models.Notification", b =>
                 {
-                    b.HasOne("SocialNetwork.Api.Models.User", "User")
+                    b.HasOne("SocialNetwork.Data.Models.User", "User")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("SocialNetwork.Api.Models.Post", b =>
+            modelBuilder.Entity("SocialNetwork.Data.Models.Post", b =>
                 {
-                    b.HasOne("SocialNetwork.Api.Models.User", "User")
+                    b.HasOne("SocialNetwork.Data.Models.User", "User")
                         .WithMany("Posts")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("SocialNetwork.Api.Models.Reaction", b =>
+            modelBuilder.Entity("SocialNetwork.Data.Models.Reaction", b =>
                 {
-                    b.HasOne("SocialNetwork.Api.Models.Post", "Post")
+                    b.HasOne("SocialNetwork.Data.Models.Post", "Post")
                         .WithMany("Reactions")
                         .HasForeignKey("PostId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("SocialNetwork.Api.Models.User", "User")
+                    b.HasOne("SocialNetwork.Data.Models.User", "User")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)

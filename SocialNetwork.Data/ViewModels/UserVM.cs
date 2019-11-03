@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SocialNetwork.Api.ViewModels.UserVMs
+namespace SocialNetwork.Data.ViewModels
 {
     public class UserVM
     {

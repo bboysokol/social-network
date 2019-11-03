@@ -7,6 +7,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SocialNetwork.Tests", "Soci
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SocialNetwork.Api", "SocialNetwork.Api\SocialNetwork.Api.csproj", "{700BB361-D711-4721-A07B-5AFD848ED38F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocialNetwork.Auth", "SocialNetwork.Auth\SocialNetwork.Auth.csproj", "{21A51E78-47C6-471A-9E5F-C63574BDA0A1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocialNetwork.Data", "SocialNetwork.Data\SocialNetwork.Data.csproj", "{5E2AA9CE-A711-44F3-B127-70B4795A4AC2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{700BB361-D711-4721-A07B-5AFD848ED38F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{700BB361-D711-4721-A07B-5AFD848ED38F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{700BB361-D711-4721-A07B-5AFD848ED38F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{21A51E78-47C6-471A-9E5F-C63574BDA0A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{21A51E78-47C6-471A-9E5F-C63574BDA0A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{21A51E78-47C6-471A-9E5F-C63574BDA0A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{21A51E78-47C6-471A-9E5F-C63574BDA0A1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5E2AA9CE-A711-44F3-B127-70B4795A4AC2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E2AA9CE-A711-44F3-B127-70B4795A4AC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E2AA9CE-A711-44F3-B127-70B4795A4AC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E2AA9CE-A711-44F3-B127-70B4795A4AC2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

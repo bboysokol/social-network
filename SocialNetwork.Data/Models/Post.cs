@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace SocialNetwork.Api.Models
+namespace SocialNetwork.Data.Models
 {
     public class Post
     {

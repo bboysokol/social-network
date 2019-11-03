@@ -1,11 +1,7 @@
-using SocialNetwork.Api.Models;
 using SocialNetwork.Api.ViewModels.CommentVM;
 using SocialNetwork.Api.ViewModels.ReactionVMs;
-using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace SocialNetwork.Api.ViewModels
 {

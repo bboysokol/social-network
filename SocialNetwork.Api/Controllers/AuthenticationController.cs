@@ -1,11 +1,11 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using SocialNetwork.Api.Models;
 using SocialNetwork.Api.Responses.Wrappers;
 using SocialNetwork.Api.Responses.Wrappers.Factories;
 using SocialNetwork.Api.Services.Interfaces;
 using SocialNetwork.Api.ViewModels;
+using SocialNetwork.Auth.Models;
 using System.Threading.Tasks;
 
 namespace SocialNetwork.Api.Controllers

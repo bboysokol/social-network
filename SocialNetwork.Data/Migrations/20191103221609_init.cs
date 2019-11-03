@@ -1,9 +1,9 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace SocialNetwork.Api.Migrations
+namespace SocialNetwork.Data.Migrations
 {
-    public partial class idchangedtobeint : Migration
+    public partial class init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -42,7 +42,7 @@ namespace SocialNetwork.Api.Migrations
                     LockoutEnd = table.Column<DateTimeOffset>(nullable: true),
                     LockoutEnabled = table.Column<bool>(nullable: false),
                     AccessFailedCount = table.Column<int>(nullable: false),
-                    RegisterDate = table.Column<DateTime>(nullable: false),
+                    RegisterDate = table.Column<string>(nullable: true),
                     AvatarUrl = table.Column<string>(nullable: true),
                     IsDeleted = table.Column<bool>(nullable: false),
                     Token = table.Column<string>(nullable: true)

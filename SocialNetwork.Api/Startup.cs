@@ -11,14 +11,16 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using NSwag;
 using NSwag.Generation.Processors.Security;
-using SocialNetwork.Api.Database;
-using SocialNetwork.Api.Models;
 using SocialNetwork.Api.Providers;
 using SocialNetwork.Api.Responses.Wrappers.Factories;
 using SocialNetwork.Api.Services;
 using SocialNetwork.Api.Services.Interfaces;
 using System.Text;
 using SocialNetwork.Api.Helpers;
+using SocialNetwork.Data.Database;
+using SocialNetwork.Data.Models;
+using SocialNetwork.Auth.Models;
+using SocialNetwork.Auth;
 
 namespace SocialNetwork.Api
 {
@@ -37,6 +39,7 @@ namespace SocialNetwork.Api
             services.AddSwaggerDocument();
             services.AddControllers()
                 .SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
+
             services.AddDbContext<SocialNetworkContext>(
                options => options.UseSqlServer(Configuration.GetConnectionString("SocialNetwork")));
 

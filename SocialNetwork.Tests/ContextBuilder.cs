@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using SocialNetwork.Api.Database;
+using SocialNetwork.Data.Database;
 
 namespace SocialNetwork.Tests
 {

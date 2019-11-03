@@ -1,4 +1,4 @@
-﻿using SocialNetwork.Api.Models;
+﻿using SocialNetwork.Data.Models;
 using SocialNetwork.Tests.Mocks;
 using Xunit;
 

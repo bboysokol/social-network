@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Moq;
-using SocialNetwork.Api.Models;
+using SocialNetwork.Data.Models;
 using System;
 using System.Threading;
 

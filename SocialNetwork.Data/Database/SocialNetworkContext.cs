@@ -1,17 +1,16 @@
-
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using SocialNetwork.Api.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using SocialNetwork.Data.Models;
 
-namespace SocialNetwork.Api.Database
+namespace SocialNetwork.Data.Database
 {
     public class SocialNetworkContext : IdentityDbContext<User, IdentityRole<int>, int>
     {
+        public SocialNetworkContext()
+        {
+        }
+
         public SocialNetworkContext(DbContextOptions<SocialNetworkContext> options)
             : base(options)
         {
@@ -22,6 +21,14 @@ namespace SocialNetwork.Api.Database
         public DbSet<Reaction> Reactions { get; set; }
         public DbSet<Friend> Friends { get; set; }
         public DbSet<Notification> Notifications { get; set; }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            if (!optionsBuilder.IsConfigured)
+            {
+                optionsBuilder.UseSqlServer("Server=(localdb)\\MSSQLLocalDB;Database=SocialNetwork;Trusted_Connection=True;MultipleActiveResultSets=true");
+            }
+        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

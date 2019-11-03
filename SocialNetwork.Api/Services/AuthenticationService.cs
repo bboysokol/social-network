@@ -1,12 +1,12 @@
 ﻿using SocialNetwork.Api.Services.Interfaces;
 using System.Linq;
-using SocialNetwork.Api.Models;
 using SocialNetwork.Api.Services.ServiceResponses;
 using SocialNetwork.Api.ViewModels;
-using SocialNetwork.Api.Database;
 using Microsoft.AspNetCore.Identity;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+using SocialNetwork.Data.Models;
+using SocialNetwork.Data.Database;
+using SocialNetwork.Auth.Models;
 
 namespace SocialNetwork.Api.Services
 {
