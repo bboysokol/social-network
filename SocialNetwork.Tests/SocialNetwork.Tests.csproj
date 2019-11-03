@@ -18,8 +18,4 @@
     </PackageReference>
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\social-network\SocialNetwork.Api.csproj" />
-  </ItemGroup>
-
 </Project>
