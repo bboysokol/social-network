@@ -5,6 +5,8 @@ using SocialNetwork.Api.Services.ServiceResponses;
 using SocialNetwork.Api.ViewModels;
 using SocialNetwork.Api.Database;
 using Microsoft.AspNetCore.Identity;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
 
 namespace SocialNetwork.Api.Services
 {
@@ -24,7 +26,7 @@ namespace SocialNetwork.Api.Services
             _jwtHelper = jwtHelper;
         }
 
-        public ServiceResponse<bool> Register(RegisterRequest request)
+        public async Task<ServiceResponse<bool>> Register(RegisterRequest request)
         {
             if (Context.Users.Any(i => i.Email == request.Email))
                 return ServiceResponse<bool>.Error("Email Error");
@@ -39,20 +41,20 @@ namespace SocialNetwork.Api.Services
                 AvatarUrl = request.AvatarUrl
             };
 
-            var result = _userManager.CreateAsync(user, request.Password);
+            var result = await _userManager.CreateAsync(user, request.Password);
 
-            if (result.IsFaulted)
+            if (!result.Succeeded)
             {
                 return ServiceResponse<bool>.Error();
             }
             return ServiceResponse<bool>.Ok();
         }
 
-        public ServiceResponse<JwtToken> Login(LoginRequest request)
+        public async Task<ServiceResponse<JwtToken>> Login(LoginRequest request)
         {
-            var result = _signInManager.PasswordSignInAsync(request.UserName, request.Password, true, false);
+            var result = await _signInManager.PasswordSignInAsync(request.UserName, request.Password, true, false);
 
-            if (result.IsFaulted)
+            if (!result.Succeeded)
                 return ServiceResponse<JwtToken>.Error("Login failed");
 
             var token = _jwtHelper.GenerateJwtToken(request.UserName);
@@ -64,11 +66,9 @@ namespace SocialNetwork.Api.Services
             return ServiceResponse<JwtToken>.Ok(token);
         }
 
-        public ServiceResponse<bool> Logout()
+        public async Task<ServiceResponse<bool>> Logout()
         {
-            var result = _signInManager.SignOutAsync();
-            if(result.IsFaulted)
-                return ServiceResponse<bool>.Error();
+            await _signInManager.SignOutAsync();
             return ServiceResponse<bool>.Ok();
 
         }

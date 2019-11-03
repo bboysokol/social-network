@@ -27,11 +27,11 @@ namespace SocialNetwork.Api.Controllers
             _responseFactory = responseFactory;
         }
 
-        protected ObjectResult CreateErrorResponse(HttpStatusCode code, string errorMessage) => StatusCode((int)code, _responseFactory.Error(errorMessage));
+        protected IActionResult CreateErrorResponse(HttpStatusCode code, string errorMessage) => StatusCode((int)code, _responseFactory.Error(errorMessage));
 
-        protected ObjectResult CreateSuccessResponse<T>(T data) => StatusCode((int)HttpStatusCode.OK, _responseFactory.Success(data));
+        protected IActionResult CreateSuccessResponse<T>(T data) => StatusCode((int)HttpStatusCode.OK, _responseFactory.Success(data));
 
-        protected ObjectResult ResolveServiceResponse<T>(ServiceResponse<T> serviceResponse) => serviceResponse.Success ? CreateSuccessResponse(serviceResponse.Data) : CreateErrorResponse(HttpStatusCode.BadRequest, serviceResponse.Message);
+        protected IActionResult ResolveServiceResponse<T>(ServiceResponse<T> serviceResponse) => serviceResponse.Success ? CreateSuccessResponse(serviceResponse.Data) : CreateErrorResponse(HttpStatusCode.BadRequest, serviceResponse.Message);
     }
 }
 

@@ -6,6 +6,7 @@ using SocialNetwork.Api.Responses.Wrappers;
 using SocialNetwork.Api.Responses.Wrappers.Factories;
 using SocialNetwork.Api.Services.Interfaces;
 using SocialNetwork.Api.ViewModels;
+using System.Threading.Tasks;
 
 namespace SocialNetwork.Api.Controllers
 {
@@ -22,14 +23,14 @@ namespace SocialNetwork.Api.Controllers
 
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(ApiSuccessResponse<bool>))]
-        public IActionResult Register(RegisterRequest request) => ResolveServiceResponse(_authenticationService.Register(request));
+        public async Task<IActionResult> Register(RegisterRequest request) => ResolveServiceResponse(await _authenticationService.Register(request));
 
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(ApiSuccessResponse<JwtToken>))]
-        public IActionResult Login(LoginRequest request) => ResolveServiceResponse(_authenticationService.Login(request));
+        public async Task<IActionResult> Login(LoginRequest request) => ResolveServiceResponse(await _authenticationService.Login(request));
 
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(ApiSuccessResponse<bool>))]
-        public IActionResult Logout() => ResolveServiceResponse(_authenticationService.Logout());
+        public async Task<IActionResult> Logout() => ResolveServiceResponse(await _authenticationService.Logout());
     }
 }

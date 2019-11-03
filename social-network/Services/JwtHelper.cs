@@ -53,5 +53,10 @@ namespace SocialNetwork.Api.Services
             return token;
         }
 
+        public bool DeactivateToken(string token)
+        {
+            return true;
+        }
+
     }
 }

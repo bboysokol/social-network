@@ -1,15 +1,17 @@
-﻿using SocialNetwork.Api.Models;
+﻿using Microsoft.AspNetCore.Mvc;
+using SocialNetwork.Api.Models;
 using SocialNetwork.Api.Services.ServiceResponses;
 using SocialNetwork.Api.ViewModels;
+using System.Threading.Tasks;
 
 namespace SocialNetwork.Api.Services.Interfaces
 {
     public interface IAuthenticationService
     {
-        ServiceResponse<bool> Register(RegisterRequest request);
+        Task<ServiceResponse<bool>> Register(RegisterRequest request);
 
-        ServiceResponse<JwtToken> Login(LoginRequest request);
+        Task<ServiceResponse<JwtToken>> Login(LoginRequest request);
 
-        ServiceResponse<bool> Logout();
+        Task<ServiceResponse<bool>> Logout();
     }
 }
