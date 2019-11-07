@@ -1,24 +1,16 @@
 using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace SocialNetwork.Data.Models
 {
     public class Comment
     {
-        [Key]
         public int Id { get; set; }
         public int UserId { get; set; }
-        [ForeignKey("UserId")]
         public virtual User User { get; set; }
         public int PostId { get; set; }
-        [ForeignKey("PostId")]
         public virtual Post Post { get; set; }
-        public string CreateTime { get; set; }
         public string Content { get; set; }
-        public bool IsDeleted { get; set; }
+        public string CreatedAt { get; set; } = String.Format("{0:g}", DateTime.Now);
+        public bool IsDeleted { get; set; } = false;
     }
 }

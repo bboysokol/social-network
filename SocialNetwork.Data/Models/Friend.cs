@@ -11,13 +11,10 @@ namespace SocialNetwork.Data.Models
     {
         
         public int UserId { get; set; }
-        [ForeignKey("UserId")]
-        public virtual User UserForeignKey { get; set; }
+        public virtual User User { get; set; }
         public int FriendId { get; set; }
-        [ForeignKey("FriendId")]
-        public virtual User FriendForeignKey { get; set; }
-        [Required]
-        public DateTime FriendshipStartDate { get; set; }
-        public bool IsDeleted { get; set; }
+        public virtual User FriendWith { get; set; }
+        public string FriendshipStartDate { get; set; } = String.Format("{0:g}", DateTime.Now);
+        public bool IsDeleted { get; set; } = false;
     }
 }

@@ -3,6 +3,7 @@ using SocialNetwork.Api.Requests;
 using SocialNetwork.Api.Services.Interfaces;
 using SocialNetwork.Api.Services.ServiceResponses;
 using SocialNetwork.Data.Database;
+using SocialNetwork.Data.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,19 +21,27 @@ namespace SocialNetwork.Api.Services
         public async Task<ServiceResponse<IEnumerable<PostVM>>> GetPosts(int skip, int take)
         {
             var posts = await Context.Posts
+                .Include(i => i.Comments).ThenInclude(a => a.User)
+                .Include(i => i.Author)
+                .Include(i => i.Reactions)
                 .Where(i => !i.IsDeleted)
                 .OrderByDescending(row => row)
                 .Skip(skip)
                 .Take(take)
                 .Select(row => new PostVM()
                 {
-                    Author = row.UserName,
-                    AuthorId = row.User.Id,
+                    Id = row.Id,
+                    Author = new UserVM()
+                    {
+                        Id = row.Author.Id,
+                        Username = row.Author.UserName,
+                        AvatarUrl = row.Author.AvatarUrl
+                    },
                     Content = row.Content,
                     ImgUrl = row.ImgUrl,
-                    AvatarUrl = row.AvatarUrl,
-                    CreateTime = row.CreateTime,
-                    Id = row.Id,
+                    CreatedAt = row.CreatedAt,
+                    
+
                     //Comments = _context.Comments
                     //        .Where(i => i.PostId == row.Id && !i.IsDeleted)
                     //        .Select(row2 => new CommentsVM()
@@ -67,6 +76,6 @@ namespace SocialNetwork.Api.Services
         public Task<ServiceResponse<bool>> AddReaction(ReactionRequest request)
         {
             throw new NotImplementedException();
-        }    
+        }
     }
 }
