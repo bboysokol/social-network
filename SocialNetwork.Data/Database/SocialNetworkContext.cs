@@ -36,15 +36,15 @@ namespace SocialNetwork.Data.Database
 
             modelBuilder
                 .Entity<Post>()
-                .HasOne(i => i.User)
+                .HasOne(i => i.Author)
                 .WithMany(i => i.Posts)
-                .HasForeignKey(i => i.UserId);
+                .HasForeignKey(i => i.AuthorId);
 
             modelBuilder
                 .Entity<Comment>()
-                .HasOne(i => i.User)
+                .HasOne(i => i.Author)
                 .WithMany(i => i.Comments)
-                .HasForeignKey(i => i.UserId)
+                .HasForeignKey(i => i.AuthorId)
                 .OnDelete(DeleteBehavior.Restrict);
 
             modelBuilder
@@ -55,7 +55,7 @@ namespace SocialNetwork.Data.Database
 
             modelBuilder
                 .Entity<Reaction>()
-                .HasIndex(p => new { p.UserId, p.PostId }).IsUnique();
+                .HasIndex(p => new { p.AuthorId, p.PostId }).IsUnique();
 
             modelBuilder
                 .Entity<Reaction>()
@@ -74,7 +74,7 @@ namespace SocialNetwork.Data.Database
 
             modelBuilder
                 .Entity<Friend>()
-                .HasOne(i => i.UserForeignKey)
+                .HasOne(i => i.User)
                 .WithMany(i => i.Friends)
                 .HasForeignKey(i => i.UserId)
                 .OnDelete(DeleteBehavior.Restrict);

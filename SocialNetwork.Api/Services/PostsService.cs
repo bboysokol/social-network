@@ -20,14 +20,14 @@ namespace SocialNetwork.Api.Services
 
         public async Task<ServiceResponse<IEnumerable<PostVM>>> GetPosts(int skip, int take)
         {
-            var posts = await Context.Posts
-                .Include(i => i.Comments).ThenInclude(a => a.User)
-                .Include(i => i.Author)
-                .Include(i => i.Reactions)
+            var posts = await Context.Posts         
                 .Where(i => !i.IsDeleted)
                 .OrderByDescending(row => row)
                 .Skip(skip)
                 .Take(take)
+                .Include(i => i.Comments).ThenInclude(a => a.Author)
+                .Include(i => i.Author)
+                .Include(i => i.Reactions)
                 .Select(row => new PostVM()
                 {
                     Id = row.Id,
@@ -40,29 +40,75 @@ namespace SocialNetwork.Api.Services
                     Content = row.Content,
                     ImgUrl = row.ImgUrl,
                     CreatedAt = row.CreatedAt,
-                    
+                    Comments = row.Comments.Select(row => new CommentVM()
+                    {
+                        Author =  new UserVM()
+                        {
+                            Id = row.Author.Id,
+                            Username = row.Author.UserName,
+                            AvatarUrl = row.Author.AvatarUrl
+                        },
+                        Content = row.Content,
+                        CreatedAt = row.CreatedAt
 
-                    //Comments = _context.Comments
-                    //        .Where(i => i.PostId == row.Id && !i.IsDeleted)
-                    //        .Select(row2 => new CommentsVM()
-                    //        {
-                    //            Author = $"{row2.User.UserName}",
-                    //            Content = row2.Content,
-                    //            CreateTime = row2.CreateTime
-                    //        }).ToList(),
-                    //Reactions = _context.Reactions
-                    //        .Where(i => i.PostId == row.Id)
-                    //        .Select(row2 => new ReactionVM()
-                    //        {
-                    //            Author = $"{row2.User.UserName}",
-                    //        }).ToList(),
+                    }).ToList(),
+                    Reactions = row.Reactions.Select(row => new ReactionVM()
+                    {
+                        User = new UserVM()
+                        {
+                            Id = row.Author.Id,
+                            Username = row.Author.UserName,
+                            AvatarUrl = row.Author.AvatarUrl
+                        }
+                    }).ToList()
                 })
                 .ToListAsync();
             return ServiceResponse<IEnumerable<PostVM>>.Ok(posts);
         }
-        public Task<ServiceResponse<PostVM>> GetPost(int id)
+        public async Task<ServiceResponse<PostVM>> GetPost(int id)
         {
-            throw new NotImplementedException();
+            var post = await Context.Posts
+                .Include(i => i.Comments).ThenInclude(a => a.Author)
+                .Include(i => i.Author)
+                .Include(i => i.Reactions)
+                .FirstOrDefaultAsync(i => !i.IsDeleted && i.Id == id);
+
+            var postDto =  new PostVM()
+            {
+                Id = post.Id,
+                Author = new UserVM()
+                {
+                    Id = post.Author.Id,
+                    Username = post.Author.UserName,
+                    AvatarUrl = post.Author.AvatarUrl
+                },
+                Content = post.Content,
+                ImgUrl = post.ImgUrl,
+                CreatedAt = post.CreatedAt,
+                Comments = post.Comments.Select(row => new CommentVM()
+                {
+                    Author = new UserVM()
+                    {
+                        Id = row.Author.Id,
+                        Username = row.Author.UserName,
+                        AvatarUrl = row.Author.AvatarUrl
+                    },
+                    Content = row.Content,
+                    CreatedAt = row.CreatedAt
+
+                }).ToList(),
+                Reactions = post.Reactions.Select(row => new ReactionVM()
+                {
+                    User = new UserVM()
+                    {
+                        Id = row.Author.Id,
+                        Username = row.Author.UserName,
+                        AvatarUrl = row.Author.AvatarUrl
+                    }
+                }).ToList()
+            };
+
+            return ServiceResponse<PostVM>.Ok(postDto);
         }
         public Task<ServiceResponse<bool>> CreatePost(PostRequest request)
         {

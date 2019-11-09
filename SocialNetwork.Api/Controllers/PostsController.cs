@@ -1,18 +1,12 @@
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Logging;
-using SocialNetwork.Api.Requests;
-using SocialNetwork.Api.Requests.CommentVM;
-using SocialNetwork.Api.Requests.ReactionVMs;
 using SocialNetwork.Api.Responses.Wrappers;
 using SocialNetwork.Api.Responses.Wrappers.Factories;
 using SocialNetwork.Api.Services.Interfaces;
+using SocialNetwork.Data.ViewModels;
 
 namespace SocialNetwork.Api.Controllers
 {
