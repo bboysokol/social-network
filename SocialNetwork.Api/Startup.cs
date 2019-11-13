@@ -92,6 +92,11 @@ namespace SocialNetwork.Api
                 }));
             });
 
+            services.Configure<ApiBehaviorOptions>(options =>
+            {
+                options.InvalidModelStateResponseFactory = ValidationResponseErrorFactory.CreateValidationErrorResponse;
+            });
+
             //services.AddSignalR().AddJsonProtocol(options => options.PayloadSerializerSettings.ContractResolver =
             //    new DefaultContractResolver());
         }
